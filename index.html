@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Mini Projects</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    section { margin-bottom: 40px; padding: 15px; border: 1px solid #ccc; border-radius: 6px; }
+    button { margin-left: 5px; }
+    img { max-width: 200px; display: block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <!-- Project 1 -->
+  <section>
+    <h2>Project 1: Add Items to a List</h2>
+    <input type="text" id="itemInput" placeholder="Type something...">
+    <button id="addItemBtn">Add</button>
+    <ul id="itemList"></ul>
+  </section>
+
+  <!-- Project 2 -->
+  <section>
+    <h2>Project 2: Random Background Color</h2>
+    <button id="colorBtn">Change Background</button>
+  </section>
+
+  <!-- Project 3 -->
+  <section>
+    <h2>Project 3: Simple Image Toggle</h2>
+    <button id="toggleBtn">Toggle Image</button>
+    <img id="toggleImage" src="https://mirhamedrooy.ir/wp-content/uploads/2021/08/9224.1603527296.jpg" alt="Toggle">
+  </section>
+
+  <!-- Project 4 -->
+  <section>
+    <h2>Project 4: Mini Counter</h2>
+    <button id="decreaseBtn">-</button>
+    <span id="counter">0</span>
+    <button id="increaseBtn">+</button>
+  </section>
+
+  <script>
+    // Project 1: Add Items to a List
+    const addItemBtn = document.getElementById("addItemBtn");
+    const itemInput = document.getElementById("itemInput");
+    const itemList = document.getElementById("itemList");
+
+    addItemBtn.addEventListener("click", () => {
+      const text = itemInput.value.trim();
+      if (text) {
+        const li = document.createElement("li");
+        li.textContent = text;
+        itemList.appendChild(li);
+        itemInput.value = "";
+      }
+    });
+
+    // Project 2: Random Background Color
+    const colorBtn = document.getElementById("colorBtn");
+    const colors = ["red","blue","green","yellow","pink","purple","orange"];
+
+    colorBtn.addEventListener("click", () => {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.backgroundColor = randomColor;
+    });
+
+    // Project 3: Simple Image Toggle
+    const toggleBtn = document.getElementById("toggleBtn");
+    const toggleImage = document.getElementById("toggleImage");
+    const images = [
+      "https://via.placeholder.com/200x150/ff7f7f/ffffff?text=Image+1",
+      "https://via.placeholder.com/200x150/7f7fff/ffffff?text=Image+2"
+    ];
+    let currentIndex = 0;
+
+    toggleBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      toggleImage.src = images[currentIndex];
+    });
+
+    // Project 4: Mini Counter
+    const decreaseBtn = document.getElementById("decreaseBtn");
+    const increaseBtn = document.getElementById("increaseBtn");
+    const counter = document.getElementById("counter");
+    let count = 0;
+
+    decreaseBtn.addEventListener("click", () => {
+      count--;
+      counter.innerText = count;
+    });
+
+    increaseBtn.addEventListener("click", () => {
+      count++;
+      counter.innerText = count;
+    });
+  </script>
+</body>
+</html>
